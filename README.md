@@ -4,7 +4,7 @@ _by Lorrx_
 ## Usage
 
 ### List per product
-```json
+```js
 GET /sales-channel-api/v1/product/{productId}/review
 --header sw-access-key='SWSCOWV0S0ZLMTV4BNVQCZLTVG' 
 
@@ -48,7 +48,7 @@ Response:
 ```
 
 ### Create
-```json
+```js
 POST /sales-channel-api/v1/product/{productId}/review
 --header sw-access-key='SWSCOWV0S0ZLMTV4BNVQCZLTVG' 
 --header sw-context-token='zTGmpd19maCTV4k7wlNJizTXFWeHWyuE'
@@ -62,7 +62,7 @@ POST /sales-channel-api/v1/product/{productId}/review
 ```
 
 ### Update
-```json
+```js
 PATCH /sales-channel-api/v1/product/{productId}/review/{reviewId}
 --header sw-access-key='SWSCOWV0S0ZLMTV4BNVQCZLTVG' 
 --header sw-context-token='zTGmpd19maCTV4k7wlNJizTXFWeHWyuE'
