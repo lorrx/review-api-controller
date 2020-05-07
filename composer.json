@@ -1,0 +1,30 @@
+{
+    "name": "lorrx/review-api-controller",
+    "version": "1.0.0",
+    "description": "description",
+    "minimum-stability": "stable",
+    "license": "MIT",
+    "type": "shopware-platform-plugin",
+    "authors": [
+        {
+            "name": "Lorrx",
+            "email": "lorrx@protonmail.com",
+            "role": "Manufacturer"
+        }
+    ],
+    "require": {
+    },
+    "autoload": {
+        "psr-4": {
+            "Lorrx\\ReviewApiController\\": "src/"
+        }
+    },
+    "extra": {
+        "shopware-plugin-class": "Lorrx\\ReviewApiController\\ReviewApiController",
+        "copyright": "(c) by Lorrx",
+        "label": {
+            "de-DE": "Review API Controller",
+            "en-GB": "Review API Controller"
+        }
+    }
+}
