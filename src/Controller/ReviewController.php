@@ -2,10 +2,8 @@
 
 namespace Lorrx\ReviewApiController\Controller;
 
-use Shopware\Core\Framework\Routing\Annotation\RouteScope;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Filter\EqualsFilter;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Criteria;
@@ -29,12 +27,27 @@ class ReviewController extends AbstractController
     public function getProductReview(string $productId): JsonResponse
     {
         $reviewRepository = $this->container->get('product_review.repository');
-        return new JsonResponse($reviewRepository->search(
+        $items = $reviewRepository->search(
             (new Criteria())
                 ->addFilter(new EqualsFilter('productId', $productId))
                 ->addFilter(new EqualsFilter('status', true)),
             Context::createDefaultContext()
-        ));
+        );
+
+        $results = [];
+
+        foreach ($items->getEntities() as $entity) {
+            $item =[];
+            $item['id'] = $entity->getId();
+            $item['productId'] = $entity->getProductId();
+            $item['points'] = $entity->getPoints();
+            $item['content'] = $entity->getContent();
+            $item['title'] = $entity->getTitle();
+            $item['createdAt'] = $entity->getCreatedAt();
+            $results[] = $item;
+        }
+
+        return new JsonResponse($results);
     }
 
     /**
